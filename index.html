@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="chatApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual Chat Box</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="ChatController as chatCtrl">
+    <div class="heading">
+        <h1> Virtual Chat Box</h1>
+        <p>You can ask: <br>hey, how are you, your name, bye</p>
+    </div><br>
+    <div class="chat-box">
+        <div class="messages">
+            <div class="message" ng-repeat="message in chatCtrl.messages">
+                <span class="user">{{message.user}}:</span>
+                <span class="text">{{message.text}}</span>
+            </div>
+        </div>
+        <div class="input-box">
+            <input type="text" ng-model="chatCtrl.newMessage" placeholder="Type a message..." ng-keypress="chatCtrl.checkKeyPress($event)">
+            <button ng-click="chatCtrl.sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
